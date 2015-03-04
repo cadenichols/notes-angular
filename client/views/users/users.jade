@@ -1,0 +1,20 @@
+.row
+  .col-xs-1
+  .col-xs-6
+    h3.page-header {{_.capitalize(name)}}
+    form
+      .form-group
+        label(for='email') Email
+        input#email.form-control(type='email', name='email', autofocus=true, required, ng-model='user.email')
+      .form-group(ng-show='name === "register"')
+        label(for='password1') Confirm Password
+        input#password1.form-control(type='password', name='password1', required, ng-model='user.password1')
+      .form-group(ng-show='name === "register"')
+        label(for='password2') Confirm Password
+        input#password2.form-control(type='password', name='password2', required, ng-model='user.password2')
+      .form-group(ng-show='name === "login"')
+        label(for='password') Password
+        input#password.form-control(type='password', name='password', required, ng-model='user.password')
+      .form-group
+        button.btn.btn-default(type='submit', ng-click='submit(user)') {{_.capitalize(name)}}
+  .col-xs-5
