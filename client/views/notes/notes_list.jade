@@ -1,0 +1,16 @@
+.row
+  h2#notes-header My Notes
+  button#new-button(type='button', ui-sref='notes.new'): i.fa.fa-pencil &nbsp; New Note
+table.table.table-striped
+  thead
+    tr
+      th.col-sm-2 Time Created
+      th.col-sm-2 Title
+      th.col-sm-4 Tags
+  tbody
+    tr(ng-repeat='note in notes | filter: tagFilter')
+      th {{moment(note.createdAt).format('llll')}}
+      th: a(ui-sref='notes.show({noteId: note._id})') {{note.title}}
+      th
+        span#tags(ng-repeat='tag in note.tags track by $index')
+          a(ui-sref='notes.list({tag:tag})') {{tag + ', '}}

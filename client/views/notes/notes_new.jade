@@ -1,0 +1,17 @@
+.row
+.col-xs-1
+.col-xs-6
+  h3.page-header New Note
+  form
+    .form-group
+      label(for='title') Title
+      input#title-input.form-control(type='text', name='title', autofocus=true, required, ng-model='note.title')
+      label(for='body') Note
+      textarea#body-input.form-control(name='body', rows=5, required, ng-model='note.body')
+      label(for='tags') Tags (comma separated)
+      input#tags-input.form-control(type='text', name='tags', ng-model='note.tags')
+      button.btn.btn-default(ng-click="clickCounter.push('true')", ng-init="clickCounter=[]") Add URL
+      button.btn.btn-default(ng-show='clickCounter.length', ng-click="clickCounter.pop()") Remove URL
+      input.form-control(type='url', ng-model='note.urls[$index]', ng-repeat='click in clickCounter track by $index')
+      button.btn.btn-default(type='submit', ng-click='submit(note)') Submit
+.col-xs-5

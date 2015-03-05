@@ -1,0 +1,14 @@
+.col-md-2
+.col-sm-12.col-md-8
+  .row
+    h2 {{note.title}}
+  .row
+    h6 Created At {{moment(note.createdAt).format('llll')}}
+    p {{note.body}}
+  .row
+    ul
+      li(ng-repeat='url in note.urls track by $index')
+        a(ng-href='{{url}}') {{url}}
+    ul
+      li(ng-repeat='tag in note.tags track by $index')
+        a(ui-sref='notes.list({tag:tag})') {{tag}}
